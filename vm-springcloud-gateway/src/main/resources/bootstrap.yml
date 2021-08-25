@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: vm-spring-cloud-gateway
+  profiles:
+    active: local
+  main.allow-bean-definition-overriding: true
+  output.ansi.enabled: always
+  cloud:
+    inetutils:
+      preferred-networks: ^1(0|72)(\.\d+)+$
+    nacos:
+      username: nacos
+      password: nacos
+      config:
+        fileExtension: yaml
+        namespace: local
+        server-addr: http://10.1.13.235:8848
+      #        shared-configs:
+#          - dataId: vm-framework-dubbo.properties
+#          - dataId: vm-framework-rocketmq.properties
+      discovery:
+        server-addr: nacos.vm.com:8848
+
+management:
+  server:
+    port: 8018
+    address: 127.0.0.1
+  endpoints.web.exposure.include: "*"
